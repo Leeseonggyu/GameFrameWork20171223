@@ -2,6 +2,8 @@
 #include<SDL.h>
 #include<iostream>
 #include<SDL_image.h>
+
+
 class Game
 {
 public:
@@ -23,6 +25,7 @@ public:
 private:
 	SDL_Window * m_pWindow;
 	SDL_Renderer*m_pRenderer;
+	int x = 0, y = 0;
 
 	bool m_bRunning = true;
 };

@@ -1,6 +1,5 @@
 #include"Game.h"
 
-
 bool Game::init(const char*title, int xpos, int ypos, int width,
 	int height, bool fullscreen)
 {
@@ -13,9 +12,9 @@ bool Game::init(const char*title, int xpos, int ypos, int width,
 
 		m_bRunning = true;
 
-		//SDL_Surface*pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+		SDL_Surface*pTempSurface = SDL_LoadBMP("assets/rider.bmp");
 		//SDL_Surface*pTempSurface = IMG_Load("assets/animate.png");
-		SDL_Surface*pTempSurface = IMG_Load("assets/animate.png");
+		//SDL_Surface*pTempSurface = IMG_Load("assets/animate-alpha.png");
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 
 		SDL_FreeSurface(pTempSurface);
@@ -68,6 +67,21 @@ void Game::handleEvents()
 		case SDL_QUIT:
 			m_bRunning = false;
 			break;
+		case SDL_KEYDOWN:
+			switch (event.key.keysym.sym) {
+			case SDLK_LEFT:   // 왼쪽키
+				x--;
+				break;
+			case SDLK_RIGHT:  // 오른쪽키
+				x++;
+				break;
+			case SDLK_UP:   // 위쪽키
+				y--;
+				break;
+			case SDLK_DOWN:   // 아래쪽키
+				y++;
+				break;
+			}
 		default:
 			break;
 
