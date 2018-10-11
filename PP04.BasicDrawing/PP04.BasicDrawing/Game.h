@@ -10,8 +10,14 @@ public:
 	SDL_Window* g_pWindow = 0;
 	SDL_Renderer* g_pRenderer = 0;
 	SDL_Texture*m_pTexture;
+	SDL_Texture*m_pTexture2;
+	SDL_Texture*m_pTexture3;
 	SDL_Rect m_sourceRectangle;
+	SDL_Rect m_sourceRectangle2;
+	SDL_Rect m_sourceRectangle3;
 	SDL_Rect m_destinationRectangle;
+	SDL_Rect m_destinationRectangle2;
+	SDL_Rect m_destinationRectangle3;
 	bool init(const char*title, int xpos, int ypos, int width,
 		int height, bool fullscreen);
 
