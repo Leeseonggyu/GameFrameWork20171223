@@ -8,6 +8,7 @@ bool Game::init(const char*title, int xpos, int ypos, int width,
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+            m_pRenderer2 = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
 
 		m_bRunning = true;
@@ -23,12 +24,19 @@ bool Game::init(const char*title, int xpos, int ypos, int width,
 		m_sourceRectangle.w = 128;
 		m_sourceRectangle.h = 82;
 
+        m_sourceRectangle2.w = 256;
+        m_sourceRectangle2.h = 164;
+
 		m_destinationRectangle.x = m_sourceRectangle.x = 0;
 		m_destinationRectangle.y = m_sourceRectangle.y = 0;
+        m_destinationRectangle2.x = m_sourceRectangle2.x = -50;
+        m_destinationRectangle2.y = m_sourceRectangle2.y = -50;
 		m_destinationRectangle.w = m_sourceRectangle.w;
 		m_destinationRectangle.h = m_sourceRectangle.h;
+        m_destinationRectangle2.w = m_sourceRectangle2.w;
+        m_destinationRectangle2.h = m_sourceRectangle2.h;
 
-		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+        SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	}
 	else {
 		return false;
@@ -42,7 +50,9 @@ void Game::render()
 	SDL_RenderClear(m_pRenderer);
 	SDL_RenderCopy(m_pRenderer, m_pTexture,
 		&m_sourceRectangle, &m_destinationRectangle);
-	SDL_RenderPresent(m_pRenderer);
+    SDL_RenderCopy(m_pRenderer, m_pTexture,
+        &m_sourceRectangle2, &m_destinationRectangle2);
+    SDL_RenderPresent(m_pRenderer);
 }
 void Game::update()
 {
