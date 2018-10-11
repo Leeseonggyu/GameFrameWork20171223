@@ -12,9 +12,9 @@ bool Game::init(const char*title, int xpos, int ypos, int width,
 
 		m_bRunning = true;
 
-		SDL_Surface*pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+		//SDL_Surface*pTempSurface = SDL_LoadBMP("assets/rider.bmp");
 		//SDL_Surface*pTempSurface = IMG_Load("assets/animate.png");
-		//SDL_Surface*pTempSurface = IMG_Load("assets/animate-alpha.png");
+		SDL_Surface*pTempSurface = IMG_Load("assets/animate-alpha.png");
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 
 		SDL_FreeSurface(pTempSurface);
@@ -28,7 +28,7 @@ bool Game::init(const char*title, int xpos, int ypos, int width,
 		m_destinationRectangle.w = m_sourceRectangle.w;
 		m_destinationRectangle.h = m_sourceRectangle.h;
 
-		SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	}
 	else {
 		return false;
