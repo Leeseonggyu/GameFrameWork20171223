@@ -14,26 +14,13 @@ bool Game::init(const char* title, int xpos, int ypos,
 
 		m_bRunning = true;
 
-		m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
+		// load 부분 대치   
+		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
+		{
+			return false;
+		}
 
-		/*SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
-
-
-		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer,
-		pTempSurface);
-		SDL_FreeSurface(pTempSurface);
-
-		m_sourceRectangle.w = 128;
-		m_sourceRectangle.h = 82;
-
-		m_destinationRectangle.x = m_sourceRectangle.x = 0;
-		m_destinationRectangle.y = m_sourceRectangle.y = 0;
-		m_destinationRectangle.w = m_sourceRectangle.w;
-		m_destinationRectangle.h = m_sourceRectangle.h;
-
-		*/
-		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
-
+		//m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
 
 	}
 	else {
@@ -42,17 +29,23 @@ bool Game::init(const char* title, int xpos, int ypos,
 	return true;
 }
 
+
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
-	//SDL_RenderCopy(m_pRenderer, m_pTexture, 
-		//&m_sourceRectangle, &m_destinationRectangle);
-	m_textureManager.draw("animate", 0, 0, 512, 82, m_pRenderer);
+
+	// draw 부분 대치 
+	TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82,
+		m_pRenderer);
+
+	TheTextureManager::Instance()->drawFrame("animate", 100, 100,
+		128, 82, 1, m_currentFrame, m_pRenderer);
+
+	/*m_textureManager.draw("animate", 0, 0, 128, 82, m_pRenderer);
 	m_textureManager.drawFrame("animate", 100, 100, 128, 82, 1,
-		m_currentFrame, m_pRenderer);
-	m_textureManager.drawFrame("animate", 200, 200, 128, 82, 1,
-		m_currentFrame2, m_pRenderer);
+	m_currentFrame, m_pRenderer);*/
 	SDL_RenderPresent(m_pRenderer);
+
 }
 
 void Game::update()
