@@ -21,7 +21,7 @@ bool Game::init(const char* title, int xpos, int ypos,
 		}
 
 		//m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
-
+		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	}
 	else {
 		return false; // sdl could not initialize

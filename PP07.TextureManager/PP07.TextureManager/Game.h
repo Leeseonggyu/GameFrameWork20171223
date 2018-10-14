@@ -22,6 +22,7 @@ private:
 	bool m_bRunning;
 
 	int m_currentFrame;
+	int m_currentFrame2;
 	//TextureManager m_textureManager;
 
 	//SDL_Texture* m_pTexture; // the new SDL_Texture variable
